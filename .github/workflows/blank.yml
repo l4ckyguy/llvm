@@ -29,8 +29,8 @@ jobs:
         run: |
           # Adding the location of Ninja to $PATH
           $env:Path += "$;GITHUB_WORKSPACE"
-          git clone --depth 1 https://github.com/d3xter-lab/llvm-obfuscator C:\llvm
-          cd C:\llvm
+          git clone --depth 1 https://github.com/d3xter-lab/llvm-obfuscator /tmp/llvm-obfuscator
+          cd /tmp/llvm-obfuscator
           mkdir build
           cd build
           # cmake -G "Visual Studio 16 2019" -Thost=x64 `
