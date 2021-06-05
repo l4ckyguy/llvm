@@ -26,9 +26,9 @@ jobs:
             )
           endif()
       - name: Install choco
-      - run: choco install -y ninja git cmake gnuwin python3 make
-      - run: pip3 install pygments yaml 
-
+      - run: |
+          choco install -y ninja git cmake gnuwin python3 make
+          pip3 install pygments yaml 
       - name: Build LLVM
         run: |
           # Adding the location of Ninja to $PATH
