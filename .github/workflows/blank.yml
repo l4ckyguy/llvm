@@ -25,10 +25,12 @@ jobs:
             COMMAND chmod +x ninja
             )
           endif()
+          
       - name: Install choco
       - run: |
           choco install -y ninja git cmake gnuwin python3 make
           pip3 install pygments yaml 
+          
       - name: Build LLVM
         run: |
           # Adding the location of Ninja to $PATH
@@ -38,16 +40,3 @@ jobs:
           mkdir build
           cd build
           cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=_install -DLLVM_TARGETS_TO_BUILD=host ..
-      - name: Install lit
-        run: |
-          pip3 install lit
-      - name: Build HelloWorld
-        run: |
-          # Adding the location of Ninja to $PATH
-          $env:Path += "$;GITHUB_WORKSPACE\llvm-project\build\bin\"
-          cd HelloWorld
-          copy-item -path CMakeLists.txt_for_windows -destination CMakeLists.txt
-          mkdir build && cd build
-          cmake -G Ninja -DLT_LLVM_INSTALL_DIR="${env:GITHUB_WORKSPACE}/llvm-project/build" ../
-          ninja HelloWorld
-          D:\a\llvm-tutor\llvm-tutor\llvm-project\build\bin\opt.exe -load HelloWorld.dll --legacy-hello-world -disable-output ..\..\test\hello.ll
