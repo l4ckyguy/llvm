@@ -29,7 +29,7 @@ jobs:
       - name: Install choco
         run: |
           choco install -y ninja git cmake gnuwin python3 make
-          pip3 install pygments yaml 
+          pip3 install pygments pyyaml
           
       - name: Build LLVM
         run: |
