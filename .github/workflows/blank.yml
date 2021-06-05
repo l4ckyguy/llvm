@@ -27,7 +27,7 @@ jobs:
           endif()
           
       - name: Install choco
-      - run: |
+        run: |
           choco install -y ninja git cmake gnuwin python3 make
           pip3 install pygments yaml 
           
